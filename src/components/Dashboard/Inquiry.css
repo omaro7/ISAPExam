@@ -1,0 +1,221 @@
+.inquiry-container {
+  background: transparent;
+  min-height: calc(100vh - 120px);
+}
+
+.inquiry-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 24px;
+}
+
+/* Search Box */
+.inquiry-search-box {
+  background: white;
+  border-radius: 12px;
+  padding: 32px 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 32px;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.search-row:last-child {
+  margin-bottom: 0;
+}
+
+.search-label {
+  width: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2d3748;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #a0aec0;
+}
+
+.search-input:focus {
+  border-color: #03C9D7;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-select {
+  width: 100%;
+  padding: 10px 32px 10px 14px;
+  border: 1px solid #03C9D7; /* As per the image highlight */
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2d3748;
+  background-color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-select:focus {
+  box-shadow: 0 0 0 2px rgba(3, 201, 215, 0.2);
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  background-color: #03C9D7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+  background-color: #02a8b3;
+}
+
+/* List Section */
+.inquiry-list-section {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.list-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.list-count {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.write-btn {
+  background-color: #03C9D7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.write-btn:hover {
+  background-color: #02a8b3;
+}
+
+/* Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.inquiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.inquiry-table th {
+  background-color: #f8fafc;
+  padding: 16px 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.inquiry-table td {
+  padding: 16px 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #2d3748;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.inquiry-table .title-col {
+  text-align: left;
+  width: 40%;
+}
+
+.inquiry-link {
+  color: #3182ce;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.inquiry-link:hover {
+  text-decoration: underline;
+}
+
+.text-gray {
+  color: #718096 !important;
+}
+
+/* Pagination (reused concept from Notices, specific container if needed) */
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 32px;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .search-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .search-label {
+    width: 100%;
+  }
+
+  .search-input, .select-wrapper {
+    max-width: 100%;
+  }
+
+  .search-btn {
+    position: static;
+    width: 100%;
+    margin-top: 16px;
+  }
+}

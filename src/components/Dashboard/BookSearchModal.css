@@ -1,0 +1,250 @@
+.book-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal-content.book-search-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 800px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  align-items: stretch;
+  padding: 0;
+  gap: 0;
+  transform: none;
+}
+
+.modal-header {
+  padding: 24px 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 24px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.book-search-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.book-search-input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.book-search-input:focus {
+  border-color: #03C9D7;
+}
+
+.book-search-btn {
+  background-color: #03C9D7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.book-search-btn:hover {
+  background-color: #02a8b3;
+}
+
+.book-list-container {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.book-list-count {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 16px;
+}
+
+.book-table-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.book-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: white;
+}
+
+.book-table td {
+  padding: 16px;
+  font-size: 13px;
+  color: #2d3748;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clickable-row:hover {
+  background-color: #f0fdfe;
+}
+
+.modal-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pagination-select {
+  padding: 6px 24px 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+  background-color: white;
+}
+
+.pagination-info {
+  font-size: 12px;
+  color: #718096;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.page-nav-btn {
+  background: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.page-num-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  color: #4a5568;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.page-num-btn.active {
+  background-color: #03C9D7;
+  color: white;
+}
+
+.modal-footer {
+  padding: 16px 32px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-close-btn {
+  background-color: #fff0f0;
+  color: #f56565;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-close-btn:hover {
+  background-color: #fed7d7;
+}
+
+@media (max-width: 768px) {
+  .modal-content.book-search-modal {
+    width: 95vw;
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+  
+  .modal-header {
+    padding: 16px 16px;
+  }
+  
+  .modal-body {
+    padding: 16px 16px;
+  }
+  
+  .book-search-box {
+    margin-bottom: 16px;
+  }
+  
+  .book-list-container {
+    padding: 12px;
+  }
+  
+  .book-table th {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+  
+  .book-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+  
+  .modal-footer {
+    padding: 12px 16px;
+  }
+  
+  .modal-pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}

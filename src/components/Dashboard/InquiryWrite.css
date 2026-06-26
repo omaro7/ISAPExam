@@ -1,0 +1,330 @@
+.inquiry-write-container {
+  background: transparent;
+  min-height: calc(100vh - 120px);
+}
+
+.inquiry-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 24px;
+}
+
+.inquiry-form-box {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 32px;
+}
+
+/* Form Layout */
+.form-row {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.content-row {
+  align-items: flex-start;
+}
+
+.form-label {
+  width: 140px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  padding-top: 10px; /* Align with inputs */
+  flex-shrink: 0;
+  position: relative;
+}
+
+.form-label.required::before {
+  content: '*';
+  color: #e53e3e;
+  margin-right: 4px;
+}
+
+.form-input-wrapper {
+  flex: 1;
+  max-width: 800px;
+}
+
+/* Inputs */
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2d3748;
+  outline: none;
+  background-color: white;
+}
+
+.form-input::placeholder {
+  color: #a0aec0;
+}
+
+.form-input:focus {
+  border-color: #03C9D7;
+}
+
+.form-input[readonly] {
+  background-color: #f8fafc;
+}
+
+.input-with-btn {
+  display: flex;
+  gap: 8px;
+}
+
+.input-with-btn .form-input {
+  max-width: 300px;
+}
+
+/* Select */
+.form-select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 32px 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2d3748;
+  background-color: white;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  border-color: #03C9D7;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding-top: 10px; /* Align with label */
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #2d3748;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-radio {
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 2px solid #cbd5e0;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.radio-label input[type="radio"]:checked ~ .custom-radio {
+  border-color: #03C9D7;
+}
+
+.radio-label input[type="radio"]:checked ~ .custom-radio::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #03C9D7;
+}
+
+/* Buttons */
+.inline-btn {
+  background-color: #03C9D7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.inline-btn:hover {
+  background-color: #02a8b3;
+}
+
+.outline-btn {
+  background-color: white;
+  color: #03C9D7;
+  border: 1px solid #03C9D7;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.outline-btn:hover {
+  background-color: #f0fdfe;
+}
+
+/* React Quill Integration */
+.editor-wrapper {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.editor-wrapper .quill {
+  border: none;
+  background-color: white;
+}
+
+.editor-wrapper .ql-toolbar.ql-snow {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.editor-wrapper .ql-container.ql-snow {
+  border: none;
+  min-height: 300px;
+  font-size: 14px;
+}
+
+.editor-wrapper .ql-editor {
+  min-height: 300px;
+  font-family: 'Noto Sans KR', 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #2d3748;
+}
+
+.editor-wrapper .ql-editor.ql-blank::before {
+  color: #a0aec0;
+  font-style: normal;
+  left: 16px;
+}
+
+/* Attachment */
+.attachment-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-input-group {
+  display: flex;
+  gap: 8px;
+  max-width: 800px;
+}
+
+.file-display {
+  flex: 1;
+}
+
+.add-attachment-btn {
+  align-self: flex-start;
+}
+
+/* Bottom Actions */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 40px;
+}
+
+.inquiry-submit-btn {
+  background-color: #03C9D7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 24px;
+  height: 40px;
+  width: auto;
+  min-width: 80px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.inquiry-submit-btn:hover {
+  background-color: #02a8b3;
+}
+
+.inquiry-cancel-btn {
+  background-color: #fff0f0;
+  color: #f56565;
+  border: none;
+  border-radius: 4px;
+  padding: 0 24px;
+  height: 40px;
+  width: auto;
+  min-width: 80px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.inquiry-cancel-btn:hover {
+  background-color: #fed7d7;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .inquiry-form-box {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-label {
+    width: 100%;
+    margin-bottom: 8px;
+    padding-top: 0;
+  }
+
+  .input-with-btn {
+    flex-direction: column;
+  }
+
+  .input-with-btn .form-input {
+    max-width: 100%;
+  }
+
+  .file-input-group {
+    flex-direction: column;
+  }
+}

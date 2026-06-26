@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import Dashboard from './components/Dashboard/Dashboard';
 function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -25,7 +25,12 @@ function App() {
 
   // Handle KakaoTalk click
   const handleKakaoClick = () => {
-    window.open('http://pf.kakao.com/_iUpEG/chat', '_blank', 'noopener,noreferrer')
+    // alert('준비중')
+    setToast({ open: true, message: '준비중입니다.' })
+    setTimeout(() => {
+      setToast({ open: false, message: '' })
+    }, 2500)    
+    //window.open('http://pf.kakao.com/_iUpEG/chat', '_blank', 'noopener,noreferrer')
   }
 
   // Handle Login submit
@@ -47,172 +52,163 @@ function App() {
 
   return (
     <>
-      {/* Background radial gradient animation */}
-      <div className="bg-animated"></div>
+      {!isLoggedIn ? (
+        <>
+          {/* Background radial gradient animation */}
+          <div className="bg-animated"></div>
 
-      <div className="login-container">
-        <div className="login-card">
-          {/* Header Logo & Title */}
-          <div className="header">
-            <img 
-              src="/images/logos/gomsbook_symbol.png" 
-              alt="logo" 
-              className="logo-img" 
-            />
-            <span className="header-title">전자책 검수 시스템</span>
-          </div>
-
-          {!isLoggedIn ? (
-            /* Login Form */
-            <form onSubmit={handleLogin}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  id="username"
-                  className="input-field"
-                  placeholder="아이디를 입력하세요."
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
+          <div className="login-container">
+            <div className="login-card">
+              {/* Header Logo & Title */}
+              <div className="header">
+                <img 
+                  src="/isapexam/images/logos/gomsbook_symbol.png" 
+                  alt="logo" 
+                  className="logo-img" 
                 />
+                <span className="header-title">정보시스템 감리사</span>
               </div>
 
-              <div className="form-group">
-                <input
-                  type="password"
-                  id="password"
-                  className="input-field"
-                  placeholder="비밀번호를 입력해 주세요."
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="options-row">
-                <label className="checkbox-label">
+              {/* Login Form */}
+              <form onSubmit={handleLogin}>
+                <div className="form-group">
                   <input
-                    type="checkbox"
-                    className="checkbox-input"
-                    checked={remember}
-                    onChange={(e) => setRemember(e.target.checked)}
+                    type="text"
+                    id="username"
+                    className="input-field"
+                    placeholder="아이디를 입력하세요."
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
                   />
-                  <span className="checkbox-custom"></span>
-                  <span>자동 로그인</span>
-                </label>
-              </div>
+                </div>
 
-              <button type="submit" className="submit-btn">
-                Sign In
-              </button>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    id="password"
+                    className="input-field"
+                    placeholder="비밀번호를 입력해 주세요."
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
 
-              {/* Cautions Box */}
-              <div className="notice-box">
-                <div className="notice-title">유의 사항</div>
-                <ul className="notice-list">
-                  <li className="notice-item">
-                    전자책 제작 지원 사업에서 안내해 드린 아이디와 비밀번호로 로그인 해주세요.
-                  </li>
-                  <li className="notice-item">
-                    아이디와 비밀번호를 모르신다면 문의 부탁드립니다.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Inquiry Methods */}
-              <div>
-                <div className="contact-title">문의 방법</div>
-                <div className="contact-row">
-                  {/* Email Inquiry */}
-                  <div 
-                    className="contact-card" 
-                    onClick={() => handleCopy('publish@bookswage.com', 'E-Mail 주소가 복사되었습니다.')}
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="24" 
-                      height="24" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      className="contact-icon"
-                    >
-                      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                      <path d="M3 7l9 6l9 -6" />
-                    </svg>
-                    <span className="contact-label">E-Mail 문의</span>
-                    <span className="contact-value">publish@bookswage.com</span>
-                  </div>
-
-                  {/* Phone Inquiry */}
-                  <div 
-                    className="contact-card"
-                    onClick={() => handleCopy('010-7516-9387', '문의 번호가 복사되었습니다.')}
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      width="24" 
-                      height="24" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      className="contact-icon"
-                    >
-                      <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                    </svg>
-                    <span className="contact-label">전화 문의</span>
-                    <span className="contact-value">010-7516-9387</span>
-                  </div>
-
-                  {/* KakaoTalk Inquiry */}
-                  <div className="contact-card" onClick={handleKakaoClick}>
-                    <img 
-                      src="/images/logos/kakaotalk_icon.png" 
-                      alt="카카오톡" 
-                      width="24" 
-                      height="24" 
+                <div className="options-row">
+                  <label className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      className="checkbox-input"
+                      checked={remember}
+                      onChange={(e) => setRemember(e.target.checked)}
                     />
-                    <span className="contact-label">카카오톡 문의</span>
-                    <span className="contact-value">카카오톡 상담</span>
+                    <span className="checkbox-custom"></span>
+                    <span>자동 로그인</span>
+                  </label>
+                </div>
+
+                <button type="submit" className="submit-btn">
+                  Sign In
+                </button>
+
+                {/* Cautions Box */}
+                <div className="notice-box">
+                  <div className="notice-title">유의 사항</div>
+                  <ul className="notice-list">
+                    <li className="notice-item">
+                      정보시스템감리사 아이디와 비밀번호로 로그인 해주세요.
+                    </li>
+                    <li className="notice-item">
+                      아이디와 비밀번호를 모르신다면 문의 부탁드립니다.
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Inquiry Methods */}
+                <div>
+                  <div className="contact-title">문의 방법</div>
+                  <div className="contact-row">
+                    {/* Email Inquiry */}
+                    <div 
+                      className="contact-card" 
+                      onClick={() => handleCopy('omaro7@hanmail.net', 'E-Mail 주소가 복사되었습니다.')}
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="1.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="contact-icon"
+                      >
+                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                        <path d="M3 7l9 6l9 -6" />
+                      </svg>
+                      <span className="contact-label">E-Mail 문의</span>
+                      <span className="contact-value">omaro7@hanmail.net</span>
+                    </div>
+
+                    {/* Phone Inquiry */}
+                    <div 
+                      className="contact-card"
+                      onClick={() => handleCopy('010-6343-3762', '문의 번호가 복사되었습니다.')}
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="24" 
+                        height="24" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="1.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="contact-icon"
+                      >
+                        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                      </svg>
+                      <span className="contact-label">전화 문의</span>
+                      <span className="contact-value">010-6343-3762</span>
+                    </div>
+
+                    {/* KakaoTalk Inquiry */}
+                    <div className="contact-card" onClick={handleKakaoClick}>
+                      <img 
+                        src="/isapexam/images/logos/kakaotalk_icon.png" 
+                        alt="카카오톡" 
+                        width="24" 
+                        height="24" 
+                      />
+                      <span className="contact-label">카카오톡 문의</span>
+                      <span className="contact-value">카카오톡 상담</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-          ) : (
-            /* Logged In View (Mock Dashboard Page) */
-            <div style={{ textAlign: 'center', padding: '20px 0' }}>
-              <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '16px' }}>
-                안녕하세요, {username}님!
-              </div>
-              <p style={{ color: '#718096', fontSize: '14px', marginBottom: '24px' }}>
-                전자책 검수 시스템 대시보드에 로그인되었습니다.
-              </p>
-              <button 
-                type="button" 
-                className="submit-btn" 
-                onClick={() => {
-                  setIsLoggedIn(false)
-                  setUsername('')
-                  setPassword('')
-                }}
-              >
-                로그아웃 (Sign Out)
-              </button>
-            </div>
-          )}
+              </form>
 
-          {/* Footer Rights */}
-          <div className="footer">
-            &copy; 한국출판문화산업진흥원 &middot; 주식회사 곰스북 | All rights reserved
+              {/* Footer Rights */}
+              <div className="footer">
+                &copy; 정보시스템감리사 &middot; 주식회사 곰스북 | All rights reserved
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : (
+        /* Logged In View: Main Dashboard Layout */
+        <Dashboard 
+          username={username} 
+          onLogout={() => {
+            setIsLoggedIn(false)
+            setUsername('')
+            setPassword('')
+          }} 
+        />
+      )}
 
       {/* Toast Alert Notification */}
       <div className={`snackbar ${toast.open ? 'show' : ''}`}>
